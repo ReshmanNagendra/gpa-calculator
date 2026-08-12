@@ -63,4 +63,24 @@ fs.copyFileSync(path.join(srcDir, 'calculator.js'), path.join(distDir, 'calculat
 fs.copyFileSync(path.join(srcDir, 'privacy-policy.html'), path.join(distDir, 'privacy-policy.html'));
 fs.copyFileSync(path.join(srcDir, 'terms.html'), path.join(distDir, 'terms.html'));
 
-console.log('Build completed successfully! Assets copied to /dist.');
+// 4. Generate sitemap.xml and robots.txt
+const baseUrl = 'https://gpa.kalvian.tech';
+const sitemapUrls = universitiesData.map(config => {
+    const slugPath = config.isRoot ? '' : config.slug;
+    return `  <url><loc>${baseUrl}/${slugPath}</loc></url>`;
+}).join('\n');
+
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls}
+</urlset>`;
+
+fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf8');
+
+const robotsTxt = `User-agent: *
+Allow: /
+Sitemap: ${baseUrl}/sitemap.xml`;
+
+fs.writeFileSync(path.join(distDir, 'robots.txt'), robotsTxt, 'utf8');
+
+console.log('Build completed successfully! Assets and Sitemap generated in /dist.');
