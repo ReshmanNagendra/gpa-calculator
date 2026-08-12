@@ -5,14 +5,10 @@ const dataDir = path.join(__dirname, 'data');
 const srcDir = path.join(__dirname, 'src');
 const templatesDir = path.join(__dirname, 'templates');
 const distDir = path.join(__dirname, 'dist');
-const outputBaseDir = path.join(distDir, 'gpa-calculator');
 
 // Ensure output directories exist
 if (!fs.existsSync(distDir)) {
     fs.mkdirSync(distDir, { recursive: true });
-}
-if (!fs.existsSync(outputBaseDir)) {
-    fs.mkdirSync(outputBaseDir, { recursive: true });
 }
 
 // 1. Read data and templates
@@ -46,9 +42,9 @@ universitiesData.forEach(config => {
     if (config.isRoot) {
         outDir = distDir;
         outHtmlPath = path.join(distDir, 'index.html');
-        outputHtml = outputHtml.replace(/\.\.\/\.\.\//g, '');
+        outputHtml = outputHtml.replace(/\.\.\//g, '');
     } else {
-        outDir = path.join(outputBaseDir, config.slug);
+        outDir = path.join(distDir, config.slug);
         outHtmlPath = path.join(outDir, 'index.html');
     }
 

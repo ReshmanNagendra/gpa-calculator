@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../style.css">
 
     <!-- html2canvas for Sharing Features -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds822O+8LRSf/U166/S0T0/1hQe3iL5s2P82CwvY1hX8lG5E1h2m3Uew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -170,8 +170,8 @@
                 <p style="margin-top: 0.5rem; line-height: 1.6;">Wondering <strong>how to calculate GPA</strong> or <strong>how to calculate CGPA from GPA</strong>? Our tool simplifies the math. You can also use our Target SGPA Predictor to find out exactly what grades you need in your upcoming semester to achieve your academic goals.</p>
                 
                 <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 1.5rem;">
-                    <a href="../../privacy-policy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy Policy</a>
-                    <a href="../../terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms of Service</a>
+                    <a href="../privacy-policy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy Policy</a>
+                    <a href="../terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms of Service</a>
                 </div>
             </footer>
         </main>
@@ -181,8 +181,8 @@
         {{CONFIG_JSON}}
     </script>
     <script>
-        window.UNIVERSITY_CONFIG = JSON.parse(document.getElementById('university-config-data').textContent);
+        window.UNIVERSITY_CONFIG = {{CONFIG_JSON}};
     </script>
-    <script src="../../calculator.js"></script>
+    <script src="../calculator.js"></script>
 </body>
 </html>
