@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "vit",
+    "name": "VIT",
+    "fullName": "Vellore Institute of Technology",
+    "gradeScale": [
+      { "grade": "S", "points": 10 },
+      { "grade": "A", "points": 9 },
+      { "grade": "B", "points": 8 },
+      { "grade": "C", "points": 7 },
+      { "grade": "D", "points": 6 },
+      { "grade": "E", "points": 5 },
+      { "grade": "F", "points": 0 }
+    ],
+    "typicalCredits": 3,
+    "metaTitle": "VIT CGPA Calculator | Vellore Institute of Technology",
+    "metaDescription": "Free online CGPA and SGPA calculator for VIT. Easily calculate your grades instantly and predict your next semester target SGPA.",
+    "metaKeywords": "gpa calculator vit, vit cgpa calculator, vit gpa calculator, srm gpa calculator"
+  },
+  {
+    "slug": "srm",
+    "name": "SRM",
+    "fullName": "SRM Institute of Science and Technology",
+    "gradeScale": [
+      { "grade": "O", "points": 10 },
+      { "grade": "A+", "points": 9 },
+      { "grade": "A", "points": 8 },
+      { "grade": "B+", "points": 7 },
+      { "grade": "B", "points": 6 },
+      { "grade": "C", "points": 5 },
+      { "grade": "F", "points": 0 }
+    ],
+    "typicalCredits": 3,
+    "metaTitle": "SRM CGPA Calculator | SRM Institute of Science and Technology",
+    "metaDescription": "Free online CGPA and SGPA calculator for SRM Institute of Science and Technology. Easily calculate your grades instantly and predict your next semester target SGPA.",
+    "metaKeywords": "srm gpa calculator, srm cgpa calculator, gpa calculator srm"
+  }
+]
