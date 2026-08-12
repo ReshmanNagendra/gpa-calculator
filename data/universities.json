@@ -1,5 +1,25 @@
 [
   {
+    "slug": "generic",
+    "name": "General",
+    "fullName": "Indian Universities",
+    "isRoot": true,
+    "gradeScale": [
+      { "grade": "O", "points": 10 },
+      { "grade": "A+", "points": 9 },
+      { "grade": "A", "points": 8 },
+      { "grade": "B+", "points": 7 },
+      { "grade": "B", "points": 6 },
+      { "grade": "C", "points": 5 },
+      { "grade": "P", "points": 4 },
+      { "grade": "F", "points": 0 }
+    ],
+    "typicalCredits": 3,
+    "metaTitle": "GPA Calculator for Indian Universities | Calculate CGPA",
+    "metaDescription": "Free online CGPA and SGPA calculator for Indian university students. Calculate your 10-point scale grades instantly and predict your target next semester SGPA.",
+    "metaKeywords": "gpa calculator, cgpa calculator, sgpa calculator, indian university gpa, 10 point scale gpa calculator"
+  },
+  {
     "slug": "vit",
     "name": "VIT",
     "fullName": "Vellore Institute of Technology",

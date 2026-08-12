@@ -34,41 +34,34 @@ universitiesData.forEach(config => {
         .replace(/\{\{METATITLE\}\}/g, config.metaTitle)
         .replace(/\{\{METADESCRIPTION\}\}/g, config.metaDescription)
         .replace(/\{\{METAKEYWORDS\}\}/g, config.metaKeywords)
-        .replace(/\{\{SLUG\}\}/g, config.slug)
+        .replace(/\{\{SLUG\}\}/g, config.isRoot ? '' : config.slug)
         .replace(/\{\{NAME\}\}/g, config.name)
         .replace(/\{\{FULLNAME\}\}/g, config.fullName)
         .replace(/\{\{GRADE_LEGEND\}\}/g, gradeLegendHtml)
         .replace(/\{\{CONFIG_JSON\}\}/g, JSON.stringify(config));
 
+    let outDir, outHtmlPath;
+    
+    // If it's the root site, put it in dist/ and fix relative asset paths
+    if (config.isRoot) {
+        outDir = distDir;
+        outHtmlPath = path.join(distDir, 'index.html');
+        outputHtml = outputHtml.replace(/\.\.\/\.\.\//g, '');
+    } else {
+        outDir = path.join(outputBaseDir, config.slug);
+        outHtmlPath = path.join(outDir, 'index.html');
+    }
+
     // Ensure the output folder exists
-    const outDir = path.join(outputBaseDir, config.slug);
     if (!fs.existsSync(outDir)) {
         fs.mkdirSync(outDir, { recursive: true });
     }
 
     // Write the index.html
-    const outHtmlPath = path.join(outDir, 'index.html');
     fs.writeFileSync(outHtmlPath, outputHtml, 'utf8');
 });
 
-// 3. Generate Root Landing Page (index.html)
-const rootIndexPath = path.join(srcDir, 'index.html');
-let rootHtml = fs.readFileSync(rootIndexPath, 'utf8');
-
-const uniListHtml = universitiesData.map(config => `
-    <a href="gpa-calculator/${config.slug}/" class="uni-card">
-        <div>
-            <div class="uni-name">${config.name}</div>
-            <div class="uni-sub">${config.fullName}</div>
-        </div>
-        <span aria-hidden="true" style="font-size: 1.2rem;">→</span>
-    </a>
-`).join('\n');
-
-rootHtml = rootHtml.replace('<!-- Injected by build.js -->', uniListHtml);
-fs.writeFileSync(path.join(distDir, 'index.html'), rootHtml, 'utf8');
-
-// 4. Copy static assets to the dist directory
+// 3. Copy static assets to the dist directory
 fs.copyFileSync(path.join(srcDir, 'style.css'), path.join(distDir, 'style.css'));
 fs.copyFileSync(path.join(srcDir, 'calculator.js'), path.join(distDir, 'calculator.js'));
 fs.copyFileSync(path.join(srcDir, 'privacy-policy.html'), path.join(distDir, 'privacy-policy.html'));
